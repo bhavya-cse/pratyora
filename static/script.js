@@ -14,9 +14,11 @@
   // relative URLs (no CORS involved). Otherwise (e.g. VS Code Live Server
   // on :5500) call Flask explicitly. Using the same hostname the page was
   // loaded from avoids localhost vs 127.0.0.1 origin mismatches.
-  const API_BASE_URL = window.location.port === '5001'
+  const API_BASE_URL = window.location.protocol === 'https:'
     ? ''
-    : `http://${window.location.hostname || '127.0.0.1'}:5001`;
+    : window.location.port === '5001'
+      ? ''
+      : `http://${window.location.hostname || '127.0.0.1'}:5001`;
 
   // State Management
   const state = {
