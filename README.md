@@ -1,24 +1,26 @@
 # Pratyora — AI-Powered News Credibility Analysis Platform
 
-> **“See Beyond the Claim. Seek the Evidence.”**  
-> Inspired by the Sanskrit epistemological concept *pratyakṣa* (प्रत्यक्ष) — direct observation, perceptual awareness, and evidence verification before forming belief.
+> **See Beyond the Claim. Seek the Evidence.**
+>
+> Inspired by the Sanskrit epistemological concept *pratyakṣa* (प्रत्यक्ष) — direct observation, perceptual awareness, and evidence-based reasoning.
 
 [![Python](https://img.shields.io/badge/Python-3.14%2B-blue.svg)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Flask-3.1-black.svg)](https://flask.palletsprojects.com/)
-[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.9-orange.svg)](https://scikit-learn.org/)
+[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-orange.svg)](https://scikit-learn.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/Tests-pytest-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/Tests-pytest-brightgreen.svg)](#testing)
 
 ---
 
 ## 1. Project Overview
 
-**Pratyora** is an educational and portfolio-grade multi-modal news credibility analysis platform. It inspects submitted text, article screenshots, and links to news articles:
-- **Text Analysis**: Tokenizes, cleans, and vectorizes claims to compute model-estimated credibility scores using a scikit-learn TF-IDF and Logistic Regression pipeline.
-- **Image & Screenshot OCR**: Extracts text from headlines, social posts, tickers, and banners with Tesseract OCR, running extracted text through the ML model.
-- **News Link Analysis**: Opens a pasted news URL, extracts the headline and article text, and runs that text through the same analysis and trusted-source verification as pasted text. Private and internal addresses are blocked, and pages that need a login or sit behind a paywall are reported clearly instead of guessed at.
+**Pratyora** is an educational and portfolio-grade multimodal news credibility analysis platform. It helps users examine submitted text, screenshots, and news article links using machine learning, OCR, and available source-verification features.
 
----
+- **Text Analysis:** Processes claims using a scikit-learn TF-IDF vectorizer and Logistic Regression pipeline to estimate credibility.
+- **Image and Screenshot OCR:** Uses Tesseract OCR to extract text from headlines, social posts, tickers, and banners before analyzing the extracted text.
+- **News Link Analysis:** Extracts available headlines and article text from supported news URLs for analysis. Unsafe private or internal addresses are blocked, and inaccessible content, such as login-protected or paywalled pages, is reported when applicable.
+
+**Important:** Model predictions are estimates, not proof that a claim is true or false. Verify important claims using reliable primary sources and independent fact-checkers.
 
 ## 2. Platform Architecture
 
