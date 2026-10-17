@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" fill="none">
+  <defs>
+    <linearGradient id="lensGrad" x1="10" y1="10" x2="110" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1D827A" />
+      <stop offset="100%" stop-color="#14263D" />
+    </linearGradient>
+    <linearGradient id="irisGrad" x1="35" y1="35" x2="85" y2="85" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#26A69A" />
+      <stop offset="100%" stop-color="#1D827A" />
+    </linearGradient>
+    <radialGradient id="focalGlow" cx="60" cy="60" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#26A69A" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#14263D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Outer Lens Ring (Aperture / Direct Observation) -->
+  <circle cx="60" cy="60" r="50" stroke="url(#lensGrad)" stroke-width="4.5" stroke-dasharray="14 6" />
+
+  <!-- Verification Calibrations / Lenses Marks -->
+  <line x1="60" y1="4" x2="60" y2="10" stroke="#1D827A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="60" y1="110" x2="60" y2="116" stroke="#1D827A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="4" y1="60" x2="10" y2="60" stroke="#1D827A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="110" y1="60" x2="116" y2="60" stroke="#1D827A" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Optical Iris Field -->
+  <circle cx="60" cy="60" r="34" fill="url(#focalGlow)" />
+  <circle cx="60" cy="60" r="28" stroke="#1D827A" stroke-width="2" stroke-opacity="0.6"/>
+
+  <!-- Geometric Pratyaksha Focus Diamond & Eye Aperture -->
+  <path d="M60 38 L78 60 L60 82 L42 60 Z" stroke="url(#irisGrad)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+  
+  <!-- Central Pupil / Verification Spark -->
+  <circle cx="60" cy="60" r="7" fill="#1D827A"/>
+  <circle cx="60" cy="60" r="3.5" fill="#F7F8FA"/>
+  
+  <!-- Subtle Angle Beam -->
+  <path d="M46 60 Q 60 48 74 60 Q 60 72 46 60 Z" fill="#1D827A" fill-opacity="0.2"/>
+</svg>

@@ -1,0 +1,105 @@
+# Additional virtual environment
+.venv-1/
+
+# Backup files
+*.backup
+*.bak
+
+# macOS files anywhere in the project
+.DS_Store
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache and artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Environment and sensitive files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials.json
+
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor and IDE settings
+.vscode/
+.idea/
+
+# Datasets and generated model binaries
+data/*.csv
+data/*.zip
+data/*.tar.gz
+models/*.joblib
+models/*.pkl
+models/*.onnx
+
+# Temporary uploads and processing output
+uploads/
+temp/
+tmp/
+temp_frames/
+temp_audio/
+*.log
+
+# Build and distribution output
+build/
+dist/
+*.egg-info/
+
+# Local test and tool caches
+.mypy_cache/
+.ruff_cache/
+
+# Python cache and test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Editor settings
+.vscode/
+.idea/
+
+# Datasets
+data/*.csv
+data/*.zip
+data/*.tar.gz
+
+# Model files
+models/*.joblib
+!models/fake_news_model.joblib
+models/*.pkl
+models/*.onnx
+
+# Temporary files
+uploads/
+temp/
+tmp/
+temp_frames/
+temp_audio/
+*.log
+

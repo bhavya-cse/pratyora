@@ -1,0 +1,82 @@
+{
+  "model_type": "TF-IDF (1-2 ngrams) + LogisticRegression (L-BFGS)",
+  "trained_at_utc": "2026-10-13T17:46:32.768253+00:00",
+  "random_seed": 42,
+  "test_size": 0.2,
+  "total_records": 24348,
+  "train_records": 19478,
+  "test_records": 4870,
+  "train_counts": {
+    "real": 10596,
+    "fake": 8882
+  },
+  "test_counts": {
+    "real": 2649,
+    "fake": 2221
+  },
+  "vocabulary_size": 25000,
+  "reliability_status": "internal_checks_passed",
+  "validation_note": "Internal held-out test checks only. This model has not been independently validated for factual truth, unseen publishers, future news, or translated and multilingual articles.",
+  "evaluation_method": "Random stratified train-test split after exact-text deduplication. Related articles and source-specific patterns may still overlap.",
+  "class_mapping": {
+    "0": "Likely Real",
+    "1": "Likely Fake"
+  },
+  "classes": [
+    0,
+    1
+  ],
+  "intercept": [
+    0.23374845717542506
+  ],
+  "baselines": {
+    "majority_class_accuracy": 0.5439,
+    "stratified_random_accuracy": 0.4936
+  },
+  "metrics": {
+    "accuracy": 0.9671,
+    "precision_macro": 0.967,
+    "recall_macro": 0.9667,
+    "f1_macro": 0.9669,
+    "precision_weighted": 0.9671,
+    "recall_weighted": 0.9671,
+    "f1_weighted": 0.9671,
+    "confusion_matrix": {
+      "true_real": 2573,
+      "false_fake": 76,
+      "false_real": 84,
+      "true_fake": 2137,
+      "matrix": [
+        [
+          2573,
+          76
+        ],
+        [
+          84,
+          2137
+        ]
+      ]
+    },
+    "per_class": {
+      "likely_real": {
+        "precision": 0.9684,
+        "recall": 0.9713,
+        "f1_score": 0.9698,
+        "support": 2649
+      },
+      "likely_fake": {
+        "precision": 0.9657,
+        "recall": 0.9622,
+        "f1_score": 0.9639,
+        "support": 2221
+      }
+    }
+  },
+  "dataset_documentation": {
+    "source": "University of Victoria ISOT Fake News Dataset / Open Research News Corpus",
+    "components": "True.csv (Reuters/AP journalistic coverage) and Fake.csv (flagged deceptive claims)",
+    "license": "Academic and Research Use (ISOT / CC-BY)",
+    "terms_note": "Dataset files are excluded from Git repository tracking via .gitignore."
+  },
+  "disclaimer": "Pratyora predictions are statistical lexical pattern estimates. They evaluate rhetorical and lexical patterns in training text, not factual truth or falsehood. Never use as a standalone fact-checking engine."
+}

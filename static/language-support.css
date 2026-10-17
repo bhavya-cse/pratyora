@@ -1,0 +1,64 @@
+/* ==========================================================================
+   Pratyora - language labels
+   1. "Supported languages" strip, directly under the hero (always deep navy)
+   2. Results "detected language" badge (follows light/dark theme)
+   ========================================================================== */
+
+/* ---------- 1. Languages strip ---------- */
+.lang-strip{padding:2.2rem 0 2.4rem;color:#fff;background:var(--navy-2);border-top:1px solid rgba(255,255,255,.1)}
+
+.lang-support-title{display:flex;align-items:center;gap:.55rem;margin-bottom:1rem;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+.lang-support-title svg{flex-shrink:0}
+.lang-support-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(242,169,0,.55),transparent)}
+
+/* 6 columns x 2 rows on desktop: tidy, aligned, no ragged edge */
+.lang-chips{list-style:none;display:grid;grid-template-columns:repeat(6,1fr);gap:.65rem;margin:0;padding:0}
+
+/* Native name on top; English name (+ Beta tag) underneath */
+.lang-chip{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:.5rem;padding:.65rem .9rem .6rem;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:10px;transition:background var(--transition-fast),border-color var(--transition-fast)}
+.lang-chip:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.35)}
+
+/* generous line-height on purpose: Telugu, Kannada and Malayalam have tall marks that clip at 1.2 */
+.lang-native{grid-column:1 / -1;font-size:1.05rem;font-weight:600;line-height:1.5}
+.lang-en{font-size:.76rem;letter-spacing:.03em;line-height:1.3;color:#A9BED4}
+
+.lang-chip--beta{border-color:rgba(242,169,0,.5);background:rgba(242,169,0,.09)}
+.lang-chip--beta:hover{border-color:var(--amber);background:rgba(242,169,0,.16)}
+.lang-beta-tag{padding:.05rem .42rem;font-size:.58rem;font-weight:700;letter-spacing:.07em;line-height:1.4;text-transform:uppercase;color:var(--amber);background:rgba(242,169,0,.16);border:1px solid rgba(242,169,0,.5);border-radius:var(--radius-full)}
+
+.lang-support-note{margin:1rem 0 0;font-size:.82rem;line-height:1.55;color:#A9BED4}
+
+@media (max-width:980px){
+  .lang-chips{grid-template-columns:repeat(4,1fr)}
+}
+@media (max-width:640px){
+  .lang-strip{padding:1.8rem 0 2rem}
+  .lang-chips{grid-template-columns:repeat(2,1fr);gap:.5rem}
+  .lang-chip{padding:.55rem .75rem}
+  .lang-native{font-size:1rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .lang-chip{transition:none}
+}
+
+/* ---------- 2. Results: detected-language badge ---------- */
+.language-badge{--lang-level:var(--text-muted);display:inline-flex;align-items:center;gap:.55rem;padding:.28rem .4rem .28rem .7rem;font-size:.82rem;font-weight:600;line-height:1.4;white-space:nowrap;color:var(--text-primary);background:var(--bg-surface);border:1px solid var(--border-medium);border-radius:var(--radius-full);box-shadow:var(--shadow-sm)}
+.language-badge[data-level="high"]{--lang-level:var(--teal-primary)}
+.language-badge[data-level="medium"]{--lang-level:var(--amber-primary)}
+.language-badge[data-level="low"]{--lang-level:var(--red-primary)}
+
+.language-badge__icon{display:inline-flex;color:var(--blue)}
+.language-badge__name{font-weight:700}
+.language-badge__native{padding-left:.55rem;font-weight:500;line-height:1.6;color:var(--text-muted);border-left:1px solid var(--border-light)}
+
+.language-badge__conf{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;font-weight:600;font-variant-numeric:tabular-nums;color:var(--text-secondary)}
+.language-badge__meter{display:inline-block;width:2.4rem;height:.32rem;overflow:hidden;background:var(--border-light);border-radius:var(--radius-full)}
+.language-badge__meter i{display:block;height:100%;background:var(--lang-level);border-radius:inherit}
+
+.language-badge__tag{padding:.12rem .55rem;font-size:.66rem;font-weight:700;letter-spacing:.06em;line-height:1.4;text-transform:uppercase;border-radius:var(--radius-full);cursor:help}
+.language-badge__tag--translated{color:var(--blue);background:var(--blue-soft)}
+.language-badge__tag--beta{color:var(--amber-primary);background:var(--amber-subtle)}
+
+@media (max-width:520px){
+  .language-badge{flex-wrap:wrap;white-space:normal;border-radius:var(--radius-lg);row-gap:.3rem}
+}

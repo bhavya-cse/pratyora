@@ -1,0 +1,245 @@
+{
+  "model_type": "TF-IDF (1-2 ngrams, 50k) + LogisticRegression (L-BFGS) + sigmoid calibration",
+  "trained_at_utc": "2026-10-16T12:08:22.927622+00:00",
+  "random_seed": 42,
+  "test_size": 0.2,
+  "total_records": 24243,
+  "train_records": 19394,
+  "test_records": 4849,
+  "train_counts": {
+    "real": 10578,
+    "fake": 8816
+  },
+  "test_counts": {
+    "real": 2645,
+    "fake": 2204
+  },
+  "vocabulary_size": 50000,
+  "hyperparameters": {
+    "C": 3.0,
+    "max_features": 50000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "stop_words": null,
+    "length_augmentation": true,
+    "crops_per_article": 2,
+    "calibration": "sigmoid (held-out slice)",
+    "tuning_validation_macro_f1": {
+      "1.0": 0.9323,
+      "3.0": 0.9345,
+      "10.0": 0.9337
+    }
+  },
+  "reliability_status": "internal_checks_passed",
+  "reliability_checks": {
+    "dataset_sufficient": true,
+    "accuracy_acceptable": true,
+    "better_than_baseline": true,
+    "short_text_acceptable": true,
+    "calibration_acceptable": true
+  },
+  "validation_note": "Internal held-out test checks only. This model has not been independently validated for factual truth, unseen publishers, future news, Indian news, or translated and multilingual articles.",
+  "evaluation_method": "Random stratified train-test split after exact-text deduplication and source-artifact scrubbing. Also scored on short excerpts, noisy OCR-like text, and a 'novel' subset with no near-duplicate in training. Related articles from the same publishers may still overlap, so these numbers are optimistic for news from other publishers or countries.",
+  "class_mapping": {
+    "0": "Likely Real",
+    "1": "Likely Fake"
+  },
+  "classes": [
+    0,
+    1
+  ],
+  "intercept": [
+    0.1050182871654087
+  ],
+  "baselines": {
+    "majority_class_accuracy": 0.5455,
+    "stratified_random_accuracy": 0.4935
+  },
+  "metrics": {
+    "accuracy": 0.9631,
+    "precision_macro": 0.9625,
+    "recall_macro": 0.9631,
+    "f1_macro": 0.9628,
+    "precision_weighted": 0.9631,
+    "recall_weighted": 0.9631,
+    "f1_weighted": 0.9631,
+    "short_text_accuracy": 0.8822,
+    "confusion_matrix": {
+      "true_real": 2546,
+      "false_fake": 99,
+      "false_real": 80,
+      "true_fake": 2124,
+      "matrix": [
+        [
+          2546,
+          99
+        ],
+        [
+          80,
+          2124
+        ]
+      ]
+    },
+    "per_class": {
+      "likely_real": {
+        "precision": 0.9695,
+        "recall": 0.9626,
+        "f1_score": 0.966,
+        "support": 2645
+      },
+      "likely_fake": {
+        "precision": 0.9555,
+        "recall": 0.9637,
+        "f1_score": 0.9596,
+        "support": 2204
+      }
+    }
+  },
+  "evaluation_conditions": {
+    "full_articles": {
+      "n": 4849,
+      "accuracy": 0.9631,
+      "f1_macro": 0.9628,
+      "brier": 0.0302,
+      "ece": 0.016,
+      "at_app_thresholds": {
+        "coverage": 0.9831,
+        "accuracy_when_decisive": 0.9694
+      }
+    },
+    "excerpt_30_60_words": {
+      "n": 4849,
+      "accuracy": 0.8822,
+      "f1_macro": 0.8815,
+      "brier": 0.087,
+      "ece": 0.0168,
+      "at_app_thresholds": {
+        "coverage": 0.9187,
+        "accuracy_when_decisive": 0.9113
+      }
+    },
+    "excerpt_60_120_words": {
+      "n": 4849,
+      "accuracy": 0.9167,
+      "f1_macro": 0.916,
+      "brier": 0.0613,
+      "ece": 0.0184,
+      "at_app_thresholds": {
+        "coverage": 0.9478,
+        "accuracy_when_decisive": 0.9356
+      }
+    },
+    "noisy_ocr_like": {
+      "n": 4849,
+      "accuracy": 0.9148,
+      "f1_macro": 0.9143,
+      "brier": 0.0644,
+      "ece": 0.0156,
+      "at_app_thresholds": {
+        "coverage": 0.9396,
+        "accuracy_when_decisive": 0.9366
+      }
+    },
+    "novel_articles_only": {
+      "n": 4610,
+      "accuracy": 0.962,
+      "f1_macro": 0.9618,
+      "brier": 0.0311,
+      "ece": 0.0169,
+      "at_app_thresholds": {
+        "coverage": 0.9824,
+        "accuracy_when_decisive": 0.9684
+      }
+    }
+  },
+  "calibration_effect": {
+    "raw_logistic_regression": {
+      "brier": 0.0309,
+      "ece": 0.0189
+    },
+    "after_calibration": {
+      "brier": 0.0302,
+      "ece": 0.016
+    },
+    "calibrated": true
+  },
+  "app_thresholds_fake_probability": {
+    "likely_real_at_or_below": 0.4,
+    "likely_fake_at_or_above": 0.65
+  },
+  "top_features": {
+    "most_real": [
+      "said",
+      "said on",
+      "president donald",
+      "on",
+      "said in",
+      "told",
+      "republican",
+      "trade",
+      "no title",
+      "told reporters",
+      "eu",
+      "reporters",
+      "minister",
+      "had",
+      "comment",
+      "government",
+      "he said",
+      "representative",
+      "said the",
+      "whether",
+      "talks",
+      "rival",
+      "news conference",
+      "in statement",
+      "in",
+      "on that",
+      "ministry",
+      "daily wire",
+      "parliament",
+      "did not"
+    ],
+    "most_fake": [
+      "video",
+      "this",
+      "gop",
+      "president trump",
+      "mr",
+      "the us",
+      "you",
+      "is",
+      "rep",
+      "even",
+      "sen",
+      "just",
+      "that",
+      "hes",
+      "isis",
+      "america",
+      "president obama",
+      "us",
+      "these",
+      "the gop",
+      "thats",
+      "fox",
+      "then",
+      "recently",
+      "all",
+      "watch",
+      "went",
+      "said that",
+      "hillary",
+      "president obamas"
+    ]
+  },
+  "dataset_documentation": {
+    "source": "University of Victoria ISOT Fake News Dataset / Open Research News Corpus",
+    "components": "True.csv (Reuters/AP journalistic coverage) and Fake.csv (flagged deceptive claims)",
+    "license": "Academic and Research Use (ISOT / CC-BY)",
+    "terms_note": "Dataset files are excluded from Git repository tracking via .gitignore."
+  },
+  "disclaimer": "Pratyora predictions are statistical lexical pattern estimates. They evaluate rhetorical and lexical patterns in training text, not factual truth or falsehood. Never use as a standalone fact-checking engine."
+}
