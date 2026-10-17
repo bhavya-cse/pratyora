@@ -447,12 +447,22 @@ def extract_claim(raw_text, english_text=None, language_code=None):
     # _short() flattens line breaks, which glued a headline to the line beneath it and then cut the
     # run-on mid-sentence. For text in English, choose the claim from the line-preserving copy.
     claim_base = base_en
+    claim_en = _claim_sentence(claim_base)
+
     if not english_text or english_text == raw_text:
         claim_base = re.sub(r"\[([^\]]+)\]\(https?://[^)]*\)", r"\1", raw_lines)
         claim_base = re.sub(r"https?://\S+", " ", claim_base)
+        claim_en = next(
+            (
+                _claim_sentence(_drop_repeat(line))
+                for line in claim_base.splitlines()
+                if len(line.split()) >= 7 and not _is_page_furniture(line)
+            ),
+            _claim_sentence(claim_base),
+        )
 
     fallback = {
-        "claim_en": _claim_sentence(claim_base),
+        "claim_en": claim_en,
         "query_en": _keyword_query(base_en),
         "query_original": raw_text[:200] if english_text and english_text != raw_text else "",
         "used_llm": False,
@@ -1336,10 +1346,9 @@ def score_sources(judged):
                           if src["stance"] in ("supports", "partial", "related")
                           and WEIGHTS.get(src["category"], 0) > 0}
 
-    # "Related" coverage only shows that outlets write about the same topic (e.g. RBI and UPI).
-    # Without at least one source that supports or partly supports the claim itself, and with
-    # nothing contradicting it, the claim is simply unverified.
-    if strong_support == 0 and contra == 0:
+    # Related coverage is weak evidence, not direct confirmation. If there is
+    # any weighted support, let the scoring rules classify it conservatively.
+    if support == 0 and contra == 0:
         return {"status": "unverified", "support": 0.0, "contradict": 0.0,
                 "real_percentage": None, "fake_percentage": None}
 
@@ -1468,7 +1477,8 @@ def not_news_reason(text):
 _SUBJECTIVE = re.compile(
     r"\b(?:best|worst|greatest|better|worse|favou?rite|beautiful|ugly|overrated|underrated|should|must)\b", re.I)
 _FACT_ANCHOR = re.compile(
-    r"\d|\b(?:said|announced|according to|killed|died|won|lost|arrested)\b", re.I)
+    r"\d|\b(?:say|says|said|announced|claimed|claims|reported|reports|according to|"
+    r"killed|died|won|lost|arrested)\b", re.I)
 
 
 def claim_is_checkable(claim_en):

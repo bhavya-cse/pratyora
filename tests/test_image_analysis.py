@@ -71,7 +71,11 @@ def test_blank_image_insufficient_text(image_processor):
 def test_mock_ocr_failure(image_processor, monkeypatch):
     img_bytes = create_test_image("PNG")
     # Simulate OCR failure
-    monkeypatch.setattr(image_processor, "extract_text_from_image", lambda img: (False, "", "Simulated Tesseract Crash"))
+    monkeypatch.setattr(
+        image_processor,
+        "extract_with_layout",
+        lambda img: (False, "", "", "Simulated Tesseract Crash"),
+    )
     result = image_processor.process_and_analyze(img_bytes, "sample.png")
     assert result["success"] is False
     assert result["error_code"] == "OCR_UNAVAILABLE"
